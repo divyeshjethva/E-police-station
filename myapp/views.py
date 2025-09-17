@@ -17,7 +17,8 @@ def index(request):
         elif user.role == "commissioner":
             fir = Complaint.objects.all()
             inspector = Inspector.objects.all()
-            return render(request,'commissioner.html',{'fir':fir,'inspector':inspector})
+            inlen = len(inspector)
+            return render(request,'commissioner.html',{'fir':fir,'inspector':inspector,'inlen':inlen})
     else:
         return render(request,'visitor.html')
         
