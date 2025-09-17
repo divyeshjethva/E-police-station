@@ -7,12 +7,15 @@ def index(request):
         user = Citizen.objects.get(email=request.session['email'])
         if user.role == "citizen":
             complaint = Complaint.objects.filter(citizen=user)
+            c = len(complaint)
             missing = MissingPerson.objects.filter(citizen=user)
-            return render(request,'citizen.html',{'user':user,'complaint':complaint,"missing":missing})
+            m = len(missing)
+            return render(request,'citizen.html',{'user':user,'complaint':complaint,"missing":missing,'m':m,'c':c})
         
         elif user.role == "inspector":
             fir = Complaint.objects.filter(Inspector=user.name)
-            return render(request,'inspector.html',{'user':user,'fir':fir})
+            f = len(fir)
+            return render(request,'inspector.html',{'user':user,'fir':fir,'f':f})
         
         elif user.role == "commissioner":
             fir = Complaint.objects.all()
