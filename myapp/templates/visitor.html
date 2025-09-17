@@ -1,0 +1,167 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visitor - E-Police Station</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+      <nav class="navbar navbar-dark bg-dark">
+        <h4 class="mx-4 text-white">E-Police Station</h4>
+        <ul class="d-flex">
+          <li class="nav-item mx-4 p-2"><a class="nav-link text-warning" href="{% url "signup" %}">signup</a></li>
+          <li class="nav-item mx-4 p-2"><a class="nav-link text-warning" href="{% url "login" %}">login</a></li>
+        </ul>
+      </nav>
+      
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Visitor Information</h2>
+
+    <!-- Missing Person Details (Slider) -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-danger text-white">
+        <h5 class="mb-0">Missing Person Details</h5>
+      </div>
+      <div class="card-body">
+        <div id="missingCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-3 mb-2">
+                  <div class="card">
+                    <img src="{% static "img/pr.jpg" %}" class="card-img-top" height="270" width="200" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Ravi Sharma</h6>
+                      <p class="card-text"><strong>Age:</strong> 25 <br><strong>Last Seen:</strong> Ahmedabad</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="card">
+                    <img src="{% static "img/pr.jpg" %}" class="card-img-top" height="270" width="200" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Ravi Sharma</h6>
+                      <p class="card-text"><strong>Age:</strong> 25 <br><strong>Last Seen:</strong> Ahmedabad</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="card">
+                    <img src="{% static "img/pr.jpg" %}" class="card-img-top" height="270" width="200" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Ravi Sharma</h6>
+                      <p class="card-text"><strong>Age:</strong> 25 <br><strong>Last Seen:</strong> Ahmedabad</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-2">
+                  <div class="card">
+                    <img src="{% static "img/pr.jpg" %}" class="card-img-top" height="270" width="200" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Ravi Sharma</h6>
+                      <p class="card-text"><strong>Age:</strong> 25 <br><strong>Last Seen:</strong> Ahmedabad</p>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card">
+                    <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Arjun Mehta</h6>
+                      <p class="card-text"><strong>Age:</strong> 28 <br><strong>Last Seen:</strong> Bhavnagar</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Sneha Joshi</h6>
+                      <p class="card-text"><strong>Age:</strong> 18 <br><strong>Last Seen:</strong> Jamnagar</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Rohit Verma</h6>
+                      <p class="card-text"><strong>Age:</strong> 32 <br><strong>Last Seen:</strong> Gandhinagar</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="card">
+                    <img src="https://via.placeholder.com/250x200" class="card-img-top" alt="Missing Person">
+                    <div class="card-body">
+                      <h6 class="card-title">Neha Gupta</h6>
+                      <p class="card-text"><strong>Age:</strong> 20 <br><strong>Last Seen:</strong> Anand</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#missingCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#missingCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules & Regulations -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-info text-white">
+        <h5 class="mb-0">Rules & Regulations</h5>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Every citizen has the right to file an FIR without delay.</li>
+          <li>Traffic rules must be strictly followed for public safety.</li>
+          <li>Use cyber security best practices while sharing information online.</li>
+          <li>Follow local law and order guidelines issued by the police department.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Emergency Information -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Emergency Information</h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Police:</strong> 100</li>
+          <li class="list-group-item"><strong>Ambulance:</strong> 108</li>
+          <li class="list-group-item"><strong>Fire Brigade:</strong> 101</li>
+          <li class="list-group-item"><strong>Women Helpline:</strong> 1091</li>
+          <li class="list-group-item"><strong>Child Helpline:</strong> 1098</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

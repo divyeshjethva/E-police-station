@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complaint Details - E-Police Station</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- Complaint Details -->
+  <div class="container mt-4">
+    <div class="d-flex navbar-nav ms-auto">
+        <!-- Back Button -->
+        <h3>Complaint Details</h3>
+        
+    </div>
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-secondary text-white">
+        Complaint Information
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Complaint Title: <span class="text-primary">{{complaint.title}}</span></h5>
+        <p><strong>Date Filed:</strong> {{complaint.date}}</p>
+        <p><strong>Status:</strong> <span class="badge bg-warning">{{complaint.status}}</span></p>
+        <p><strong>Assigned Inspector:</strong> {{complaint.Inspector}}</p>
+        <p><strong>Remarks:</strong> {{complaint.remark}}</p>
+        <hr>
+        <p><strong>Description:</strong></p>
+        <p>
+          {{complaint.description}}
+        </p>
+      </div>
+    </div>
+
+    <!-- Citizen Details -->
+    <div class="card shadow-sm mt-4">
+      <div class="card-header bg-dark text-white">
+        Citizen Information (Filed By)
+      </div>
+      <div class="card-body">
+        <p><strong>Name :</strong> {{complaint.citizen.name}}</p>
+        <p><strong>Email :</strong> {{complaint.citizen.email}}</p>
+        <p><strong>Address :</strong>  {{complaint.citizen.address}}</p>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

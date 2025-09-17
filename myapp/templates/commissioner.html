@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Police Station Dashboard - E-Police Station</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">E-Police Station</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-warning" href="{% url "logout" %}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard -->
+  <div class="container mt-4">
+    <h3>Welcome, Commissioner 👮‍♂️</h3>
+    <p class="text-muted">Here is your police station dashboard overview.</p>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+      <div class="col-md-3">
+        <div class="card text-white bg-primary shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Total Inspectors</h5>
+            <h3>5</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-secondary shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Total Constables</h5>
+            <h3>20</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-warning shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Pending FIRs</h5>
+            <h3>8</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-success shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Closed Cases</h5>
+            <h3>12</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manage Inspectors -->
+    <div id="inspectors" class="card shadow-sm mb-4">
+      <div class="card-header bg-dark text-white">
+        <h6 class="mb-0">Manage Inspectors</h6>
+      </div>
+      <div class="card-body">
+        <form class="row g-3" action="{% url "commissioner" %}" method="post">
+          {% csrf_token %}
+          <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Inspector Name" name="name">
+          </div>
+          <div class="col-md-3">
+            <input type="email" class="form-control" placeholder="Email" name="email">
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Assign Area" name="area">
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">Add Inspector</button>
+          </div>
+        </form>
+        <hr>
+        <table class="table table-bordered mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Assigned Area</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in inspector %}
+            <tr>
+              <td>{{i.pk}}</td>
+              <td>{{i.name}}</td>
+              <td>{{i.email}}</td>
+              <td>{{i.area}}</td>
+              <td><a href="{% url "delinspector" pk=i.pk %}"><button class="btn btn-sm btn-danger">Remove</button></a></td>
+            </tr>
+            {% endfor %}
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Manage Constables -->
+    <div id="constables" class="card shadow-sm mb-4">
+      <div class="card-header bg-info text-white">
+        <h6 class="mb-0">Manage Constables</h6>
+      </div>
+      <div class="card-body">
+        <form class="row g-3">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Constable Name">
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Badge No.">
+          </div>
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Add Constable</button>
+          </div>
+        </form>
+        <hr>
+        <table class="table table-bordered mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Badge No.</th>
+              <th>Assigned Area</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Amit Sharma</td>
+              <td>CN-101</td>
+              <td>Sector 3</td>
+              <td><button class="btn btn-sm btn-danger">Remove</button></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sunil Kumar</td>
+              <td>CN-102</td>
+              <td>Sector 7</td>
+              <td><button class="btn btn-sm btn-danger">Remove</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- View Complaints with Assign -->
+    <div id="complaints" class="card shadow-sm mb-4">
+      <div class="card-header bg-secondary text-white">
+        <h6 class="mb-0">Complaint Records</h6>
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Complaint Title</th>
+              <th>Date Filed</th>
+              <th>Citizen Name</th>
+              <th>View</th>
+              <th>Assign Inspector</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in fir %}
+            <tr>
+              <td>{{i.pk}}</td>
+              <td>{{i.title}}</td>
+              <td>{{i.date}}</td>
+              <td>{{i.citizen.name}}</td>
+              <td><a href="{% url "viewfir" pk=i.pk %}"><button type="button" class="btn btn-success">View</button></a></td>
+              <td>
+                <style>
+                .op{
+                  width: 20px;
+                }
+                </style>
+                <form class="d-flex" action="{% url "ainspector" %}" method="post">
+                  {% csrf_token %}
+                  <input class="op" type="text" name="pk" value="{{i.pk}}" >
+                  <select class="form-select form-select-sm me-2" name="inspector">
+                    <option value="{{i.Inspector}}" hidden>{{i.Inspector}}</option>
+                    
+                    {% for j in inspector %}
+                    <option value="{{j.name}}">{{j.name}}</option>
+                    {% endfor %}
+                  </select>
+                  <button type="submit" class="btn btn-sm btn-success">Assign</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

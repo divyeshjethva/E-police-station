@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Missing Person - E-Police Station</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-header bg-danger text-white text-center">
+            <h4>Missing Person Report Form</h4>
+          </div>
+          <div class="card-body p-4">
+            <form action="{% url "missingperson" %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+              <!-- Person Name -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name of Missing Person</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter full name" name="name" required>
+              </div>
+
+              <!-- Age & Gender -->
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="age" class="form-label">Age</label>
+                  <input type="number" class="form-control" id="age" placeholder="Enter age" name="age" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="gender" class="form-label">Gender</label>
+                  <select class="form-select" id="gender" name="gender" required>
+                    <option selected disabled>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Physical Description -->
+              <div class="mb-3">
+                <label for="description" class="form-label">Physical Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Height, weight, clothes, special marks etc." name="description" required></textarea>
+              </div>
+
+              <!-- Last Seen Details -->
+              
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="date" class="form-label">Last Seen Date</label>
+                  <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+
+              <!-- Upload Photo -->
+              <div class="mb-3">
+                <label for="photo" class="form-label">Upload Recent Photo</label>
+                <input type="file" class="form-control" id="photo" name="photo" required>
+              </div>
+
+              
+              <!-- Submit Button -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-danger">Submit Report</button>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer text-center text-muted">
+            Note: Providing false information is a punishable offense under law.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
